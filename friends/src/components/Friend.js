@@ -2,7 +2,9 @@ import React from 'react';
 
 const Friend = () => {
     return (
-    <div></div>)
+    <div>
+        Testing friend
+    </div>)
 }
 
 export default Friend;
