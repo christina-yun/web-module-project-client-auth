@@ -16,12 +16,12 @@ const FriendList = (props) => {
             .catch(err=> {
                 console.error(err)
             })
-    }, [])
+    }, [friendsList])
 
     return (
     <div>
         {friendsList.map(friend=> {
-            return <Friend friend={friend}/>
+            return <Friend friend={friend} key={friend.id}/>
         })}
         <AddFriend />
     </div>)

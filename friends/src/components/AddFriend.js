@@ -1,8 +1,9 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const AddFriend = () => {
     const initialState = {
+        id:Date.now(),
         name:'',
         age: '',
         email: ''
@@ -18,14 +19,17 @@ const AddFriend = () => {
 
     const handleSubmit= (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/api/friends', friend)
+
+        axiosWithAuth()
+        .post('http://localhost:5000/api/friends', friend)
             .then(resp => {
                 console.log('submit resp', resp.data)
             })
-            .catch()
+            .catch(err => {
+                console.error(err);
+            })
         setFriend(initialState)
     }
-
 
     return (
         <div className='add-friend-form'>
