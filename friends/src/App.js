@@ -1,9 +1,11 @@
 import React from 'react';
 import { Route, Link, Switch} from 'react-router-dom';
 
+import PrivateRoute from './components/PrivateRoute';
+
 import Login from './components/Login';
 import Logout from './components/Logout';
-import Friends from './components/Friends';
+import FriendList from './components/FriendList';
 
 
 
@@ -17,8 +19,8 @@ function App() {
 
       <Switch>
         <Route path='/login' component={Login}/>
-        <Route path='/logout' component={Logout}/>
-        <Route path='/friends' component={Friends}/>
+        <PrivateRoute path='/logout' component={Logout}/>
+        <PrivateRoute path='/friends' component={FriendList}/>
         <Route path='/' component={Login}/>
       </Switch>
 

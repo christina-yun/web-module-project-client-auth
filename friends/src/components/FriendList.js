@@ -3,12 +3,13 @@ import React from 'react';
 import Friend from './Friend';
 import AddFriend from './AddFriend';
 
-const Friends = () => {
+const FriendList = () => {
 
     return (
     <div>
         <Friend />
+        <AddFriend />
     </div>)
 }
 
-export default Friends;
+export default FriendList;
