@@ -4,16 +4,16 @@ import axios from 'axios';
 
 const Login = () => {
     const [credentials, setCredentials] = useState({
-        username: '',
-        password: ''
+            username: '',
+            password: ''
     })
 
-    const handleChange = (event) => {
+    let history = useHistory();
+
+    const handleChange = (e) => {
         setCredentials({
-            credentials: {
-                ...credentials,
-                [event.target.name]: event.target.value
-            }
+            ...credentials,
+            [e.target.name]: e.target.value
         })
     }
 
@@ -22,9 +22,14 @@ const Login = () => {
         
         axios.post('http://localhost:5000/api/login', credentials)
             .then(resp => {
-                console.log('here!', resp)
+                console.log('here!', resp.data.payload)
+                localStorage.setItem('token', resp.data.payload)
+                history.push('/friends')
+
             })
-            .catch()
+            .catch(err => {
+                console.error(err)
+            })
     }
 
 
@@ -35,12 +40,14 @@ const Login = () => {
             type='text'
             name='username'
             value={credentials.username}
+            placeholder='username'
             onChange={handleChange}/>
 
             <input 
             type='password'
             name='password'
             value={credentials.password}
+            placeholder='password'
             onChange={handleChange}/>
             
             <button>Log in</button>

@@ -16,10 +16,10 @@ function App() {
       </nav>
 
       <Switch>
-        <Route path='/login' component={Login} />
+        <Route path='/login' component={Login}/>
         <Route path='/logout' component={Logout}/>
         <Route path='/friends' component={Friends}/>
-        <Route path='/' />
+        <Route path='/' component={Login}/>
       </Switch>
 
     </div>
